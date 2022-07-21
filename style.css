@@ -1,0 +1,727 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    zoom: -90%;
+}
+
+body{
+    font-family: sans-serif;
+    /*padding: 100px 20px 0;      /*Acomodamos el tamano del header con respecto al texto*/
+}
+
+.header{
+    background-color: white;
+    opacity: 95%;
+    height: 100px;
+    /*Fija el header para siempre este arriba */
+    /*position: absolute*/
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2; /*Hace que este elemente este por detras del z-index: 1*/
+}
+
+.nav{
+    /* Va a hacer que el logo este a la izquierda y los elementos a la derecha*/
+    display: flex;
+    justify-content: space-between;
+
+    /*max-width: 992px;*/ /*Hace que la separacion entre el logo y los elementos sea definida*/
+    /*margin: 0 auto;*/ /*Centra los elementos, el 0 es arriba y abajo y el auto es derecha e izquierda*/
+}
+
+.nav-link{
+    /*Decoracion de los elementos del header*/
+    color: rgb(33, 30, 219);
+    text-decoration: none;
+}
+
+.nav-link2{
+    /*Decoracion de los elementos del header*/
+    color: grey;
+    text-decoration: none;
+}
+
+.nav-link3{
+    /*Decoracion de los elementos del header*/
+    color: white;
+    text-decoration: none;
+}
+
+.logo{
+    font-size: 35px;    /*Aumenta el tamano del logo del header*/
+    font-weight: bold;  /*Pone en negritas el logo*/
+    padding: 0 180px;    /*Hace que el logo se separe del lado izquierdo a la derecha un poco*/
+    line-height: 120px;  /*Hace que el logo se separe de la parte superior hacia abajo un poco*/
+}
+
+.nav-menu{
+    display: flex; /*Hace que los elementos del header queden en posicion horizontal*/
+    margin-right: 100px; /*Hace que los elementos queden separados de la derecha*/
+    list-style: none;   /*Quita los puntos de los elementos del header*/
+}
+
+.nav-menu-item{
+    font-size: 18px;
+    margin: 0 17px; /*Agrega un margen (Separacion) horizontal entre los elementos del header*/
+    line-height: 110px; /*Hace que los elementos del header se separes de la parte superior hacia abajo un poco*/
+    text-transform: uppercase;  /*Hace mayusculas las letras de los elementos del header.*/
+    width: max-content; /*No corta el contenido cuando se acorta la pagina*/
+}
+
+/*Decoracion del hover*/
+.nav-menu-link{
+    padding: 15px 12px;  /*Tamano del recuadro que se remarca cuando pasas el raton por encima*/
+    border-radius: 5px; /*Agrega un radio al borde*/
+}
+
+/*Cuando pasas el raton encima de los elementos se remarcan*/
+.nav-menu-link:hover,
+.nav-menu-link_active{
+    background-color: purple;
+    box-shadow: 0 0 4px 0 black;
+    transition: .5s; /*Delay de .5s para la animacion*/
+}
+
+/*Icono del header, barras*/
+.nav-toggle{
+    color: purple;
+    background: none; /*Quita el fondo del icono*/
+    border: none;     /*Quita los bordes del icono*/     
+    font-size: 30px;  /*Cambia el tamano del icono*/  
+    padding: 0 20px;  
+    line-height: 60px;
+    cursor: pointer; /*Remarca cuando das click en el icono*/
+
+    display: none;  /*No se va a observar cuando estemos en escritorio*/
+}
+
+/*Cuando tenemos menos de 768px se ejecuta lo que esta en este media*/
+@media (max-width: 768px){
+    body{
+        padding-top: 70px;
+    }
+
+    .header{
+        height: 60px;
+    }
+    
+    .logo{
+        font-size: 25px;    /*Cambia el tamano del logo del header*/
+        padding: 0 20px;    /*Hace que el logo se separe del lado izquierdo a la derecha un poco*/
+        line-height: 60px;  /*Hace que el logo se separe de la parte superior hacia abajo un poco*/
+    }
+    
+    .nav-menu{
+        flex-direction: column; /*Los elementos del header se encontraran uno encima del otro*/
+        align-items: center;    /*Centramos los elementos del header*/
+        margin: 0;
+        /*margin-right: 20px;*/ /*Hace que los elementos queden separados de la derecha*/
+        background-color: #2c3e50; 
+        position: fixed; /*Hace que la posicion no dependa de donde se encuentra, si no que lo haga de la ventana donde se encuentre.*/
+        left: 0;
+        top: 60px;       /*Da la altura del menu desplegable con respecto al header*/
+        width: 100%; /*Ancho del header*/
+        padding: 20px 0; /*Elimina el padding que anade el navegador*/
+
+        /*Anade una barra de scroll automaticamente cuando la necesite*/
+        height: calc(100%-60px);
+        overflow-y: auto;
+
+        left: 100%; /*Va a estar a la derecha cuando esta inactivo*/
+        transition: left 0.3s; /*Cuando se haga left va a tener la transicion de 0.3s*/
+    }
+    
+    .nav-menu-item{
+        line-height: 70px; /*Hace que los elementos del header se separes de la parte superior hacia abajo un poco*/
+    }
+
+    .nav-menu-link:hover,   /*Para separar los selectores siempre debe llevar la coma*/
+    .nav-menu-link_active{
+        background: none;
+        color: #83c5f7;
+    }
+
+    /*Icono del header, barras*/
+    .nav-toggle{
+        display: block;  /*se va a observar cuando estemos en movil*/
+    }
+
+    .nav-menu_visible{
+        left: 0; /*Va a volver a su posicion original cuando esta activo*/
+    }
+
+    /**/
+    .nav-toggle:focus:not(:focus-visible){
+        outline: none;
+    }
+}
+
+.ha1{
+    text-transform: capitalize;
+    padding: 170px 180px 0;
+    color: purple;
+    font-size: 70px;
+}
+
+.ha2{
+    line-height: 35px;  /*Interlineado*/
+    padding: 30px 180px 0;
+    color: grey;
+    font-size: 20px;
+}
+
+.img1{
+    max-width: 200%;
+    max-height: 200%;
+}
+
+.parent {
+    width: 100% !important;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;    
+}
+
+.ofc{
+        width: 1000px;
+        height: 1000px;
+        object-fit: cover;
+        padding: 0; /*Eliminamos el padding que anade el navegador*/
+    }
+
+.fondoGradiente{
+    background: linear-gradient(to right,rgb(122, 116, 235), rgb(78, 78, 212));
+    height: 1000px;
+}
+
+.espacio{
+    height: 200px;
+}
+
+.icons{
+    color: gold;
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.icons2{
+    color: rgb(219, 18, 219);
+    font-size: 20px;
+    padding: 0 10px;
+    font-size: 30px;
+}
+
+.text-icons{
+    padding: 30px 180px 0;
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
+}
+
+.text-list-icons{
+    margin: 0 17px;
+    display: flex;
+}
+
+.text-icons2{
+    padding: 200px 180px 0;
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    font-size: 30px;
+    font-weight: bolder;
+    color: rgb(25, 25, 110);
+    box-shadow: rgb(88, 88, 172);
+}
+
+.separador {
+    padding-top: 50px;
+}
+
+.contenedor {
+    display: block;
+    max-width: 620px;
+    margin: auto;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 10px;  /*Cambia posicion*/
+    width: 1150px;
+    height: 150px;
+    background-color: white;
+    box-shadow: inset 0 0 10px 0 pink;
+    border-radius: 10px;
+    transition: transfom .1s;
+
+    position: absolute;
+    opacity: 95%;
+    z-index: 1;         /*Hace que este elemente este por detras del header*/
+}
+
+.box-icons{
+    /*padding: 30px 180px 0;*/
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+    color: grey;
+    margin-left: 0 30px;
+}
+
+.text-style-box{
+    color:purple;
+    font-size: 20px;
+}
+
+.box-list-icons{
+    margin: 0 60px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.box-list-button{
+    margin: 0 60px;
+    font-size: 15px;
+    line-height: 30px;
+    padding: 15px;
+}
+
+.submit-button{
+    padding: 20px 50px;  /*Tamano del recuadro que se remarca cuando pasas el raton por encima*/
+    border-radius: 5px; /*Agrega un radio al borde*/
+    opacity: none !important;
+}
+
+.fondoImagen{
+    background-image: url(vaccines.jpg);
+    width: 80%;
+    height: 170px;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0 200px;
+}
+
+.ha2-2{
+    text-transform: capitalize;
+    padding: 150px 180px 0;
+    color: purple;
+    font-size: 50px;
+}
+
+.contenedor2 {
+    display: block;
+    max-width: 90%;
+    margin: auto;
+}
+
+.contenedor2-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 25px 100px 0;
+    padding: 25px 25px 0;
+}
+
+.box-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 10px;
+    width: 350px;
+    height: 350px;
+    background-color: white;
+    box-shadow:0 0 5px 0 rgb(110, 141, 243);
+    border-radius: 10px;
+    transition: transfom .1s;
+}
+
+.box-box:hover {
+    margin: 0 10px 40px;
+    background-color: white;
+    box-shadow:0 0 20px 0 rgb(77, 104, 194);
+    transition: .5s; /*Delay de .5s para la animacion*/
+}
+
+.ul-box{
+    list-style: none;
+}
+
+.icon-in-box{
+    margin: 20px 10px;
+    color: purple;
+    font-size: 30px;
+}
+
+.texth1-in-box{
+    color: rgb(42, 50, 122);
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.textp-in-box{
+    margin: 10px 0;
+    color: grey;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.textp-in-box2{
+    margin: 10px 0;
+    color: grey;
+    font-size: 20px;
+    line-height: 30px;
+    margin-right: 50px;
+}
+
+.ha2-3{
+    text-transform: capitalize;
+    padding: 150px 100px 0;
+    color: purple;
+    font-size: 50px;
+}
+
+.ha2-3-1{
+    line-height: 35px;  /*Interlineado*/
+    padding: 30px 100px 0;
+    color: grey;
+    font-size: 20px;
+}
+
+.ofc2{
+    width: 100%;
+    height: 1000px;
+    object-fit: cover;
+    padding: 0; /*Eliminamos el padding que anade el navegador*/
+}
+
+.espacio-grid2{
+    height: 200px;
+}
+/*-----------------------------------------------------------------------Contenedores preparations---------------------------------------------------------------*/
+.contenedor3 {
+    display: block;
+    max-width: 90%;
+    margin: auto;
+}
+
+.contenedor3-2 {
+    /*display:flex;*/
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 60px 20px 0;
+    padding: 25px 25px 0;
+}
+
+.preparations-box {
+    display:flex;
+    list-style: none;
+    flex-direction: column;
+    align-items: left;
+    /*justify-content: center;*/
+    margin: 40px;
+    width: 600px;
+    height: 70px;
+    background-color: white;
+    box-shadow:0 0 5px 0 rgb(110, 141, 243);
+    border-radius: 10px;
+    transition: transfom .1s;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.ul-box-expand{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-in-box-preparations{
+    margin: 20px -40px;
+    color: purple;
+    font-size: 30px;
+    /*display: flex;*/ /*Solo es necesario ponerlo en la lista ul antes de la li*/
+}
+
+.icon-in-box-preparations-expand{
+    margin: 20px 30px;
+    color: purple;
+    font-size: 30px;
+    /*display: flex;*/
+}
+
+.text-icons-preparations{
+    margin: 25px 50px;
+    /*display: flex;*/
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
+}
+
+.buton-preparations{
+    color: purple;
+    background: none; /*Quita el fondo del icono*/
+    border: none;     /*Quita los bordes del icono*/     
+    font-size: 30px;  /*Cambia el tamano del icono*/  
+    padding: 0 0;  
+    line-height: 60px;
+    cursor: pointer; /*Remarca cuando das click en el icono*/
+    /*display: none;  /*No se va a observar cuando estemos en escritorio*/
+}
+
+.no-display{
+    margin: 0 30px;
+    color: grey;
+    font-size: 20px;
+}
+
+.preparations-box:hover{
+    display:block;
+    height: 200px;
+    display: block;
+    box-shadow:0 0 2px 0 rgb(110, 141, 243);
+    transition: .5s;
+}
+
+.espacio-grid3{
+    height: 0px;
+}
+
+.espacio-grid3-2{
+    height: 200px;
+}
+
+/*----------------------------------------------------------------Ultimos contenedores---------------------------------------------------------------------------------*/
+
+.contenedor4 {
+    display: block;
+    max-width: 90%;
+    margin: auto;
+}
+
+.contenedor4-2 {
+    /*display:flex;*/
+    flex-wrap: wrap;
+    margin: 40px 30px 0;
+    padding: 25px 80px 0;
+    display: flex;
+}
+
+.contact-box {
+    display:flex;
+    list-style: none;
+    flex-direction: column;
+    align-items: left;
+    /*justify-content: center;*/
+    margin: 20px;
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    box-shadow:0 0 5px 0 rgb(110, 141, 243);
+    border-radius: 10px;
+    transition: transfom .1s;
+    /*cursor: pointer;*/
+    /*overflow: hidden;*/
+}
+
+.ul-box-contact{
+    list-style: none;
+    display: flex;
+}
+
+.ul-box-contact2{
+    list-style: none;
+}
+
+.icon-in-box-contact{
+    margin: 55px 0px 0;
+    color: rgb(0, 83, 238);
+    font-size: 40px;
+    /*display: flex;*/ /*Solo es necesario ponerlo en la lista ul antes de la li*/
+}
+
+.text-icons-contact{
+    margin: 50px -30px 0 ;  /*Superior e inferior, Izquierda y Derecha, */ /*Superior, Derecha, Abajo, Izquierda*/
+    /*display: flex;*/
+    text-decoration: none;
+    list-style: none;
+    font-size: 30px;
+    font-weight: bold;
+    color: purple;
+}
+
+.text-icons-contact-list{
+    margin: 0 -30px;
+    /*display: flex;*/
+    text-decoration: none;
+    list-style: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: grey;
+}
+
+.icon-in-box-contact2{
+    margin: 20px 30px;
+    color: purple;
+    font-size: 30px;
+    /*display: flex;*/
+}
+
+.contact-list-button{
+    margin: 0 0px;
+    font-size: 15px;
+    line-height: 30px;
+    padding: 110px 60px;
+}
+
+.contact-button{
+    background-color: rgb(177, 175, 221);
+    margin: 0px -20px;
+    height: 60px;
+    width: 220px;
+    padding: 20px 50px;  /*Tamano del recuadro que se remarca cuando pasas el raton por encima*/
+    border-radius: 5px; /*Agrega un radio al borde*/
+    cursor: pointer;
+}
+
+.text-in-contact-button{
+    color: blue;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact-button:hover{
+    background-color: rgb(153, 74, 153);
+}
+
+.contact-box:hover{
+    box-shadow:0 0 10px 0 rgb(110, 141, 243);
+}
+
+.espacio-contact{
+    height: 70px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.footer{
+    padding: 40px 0;
+    background-color: rgb(236, 236, 255);
+    width: 100%;
+}
+
+.footer .social{
+    text-align: center;
+    padding-bottom: 25px;
+    color: #4b4c4b;
+    position: relative;
+}
+
+.footer .social a{
+    font-size: 24px;
+    color: inherit;
+    border: 1px solid #ccc;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 8px;
+    opacity: 0.75; 
+}
+
+.footer .social a:hover{
+    opacity: 0.9;
+
+}
+
+.footer ul{
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.footer ul a{
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.footer ul li{
+    display: inline-block;
+    padding: 0 15px;
+}
+
+.footer ul li a:hover{
+    opacity: 1;
+}
+
+.footer .copyright{
+    margin: 100px 0 0 100px;            /*Superior e inferior, Izquierda y Derecha, */ /*Superior, Derecha, Abajo, Izquierda*/
+    font-size: 20px;
+    color: #aaa;
+}
+
+.ha2-4{
+    text-transform: capitalize;
+    padding: 30px 100px 0;
+    color: purple;
+    font-size: 50px;
+}
+
+.ha2-4-1{
+    line-height: 35px;  /*Interlineado*/
+    padding: 30px 120px 0;
+    color: grey;
+    font-size: 20px;
+}
+
+.tabla{
+    height: 100px;
+    color: purple;
+}
+
+.titulos-tabla{
+    font-size: 25px;
+    line-height: 10px;
+}
+
+.centrar-tabla{
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    /*color: grey;*/
+    line-height: 10px;
+    font-size: 20px;
+}
+
+.link-tabla{
+    text-decoration: none;
+    color: grey;
+}
+
+.contenedor-footer{
+    margin: 20px;
+    color: grey;
+}
+
